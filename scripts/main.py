@@ -17,7 +17,7 @@ def setup_logging():
     os.makedirs('logs', exist_ok=True)
 
     # Use a single log filename without a timestamp
-    log_filename = 'logs/app.log'
+    log_filename = '../logs/app.log'
 
     # Configure logging with rotating file handler
     # maxBytes: 1MB file size limit
