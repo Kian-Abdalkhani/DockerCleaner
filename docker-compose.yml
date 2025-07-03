@@ -1,8 +1,8 @@
 name: DockerCleaner
 services:
-  homeserver-scripts:
+  cleaner:
     build: .
-    container_name: homeserver-scripts
+    container_name: cleaner
     restart: unless-stopped
     volumes:
       # Mount Docker socket to allow container to manage other containers
@@ -15,8 +15,8 @@ services:
     # Run with appropriate user permissions for Docker socket access
     user: "0:0"  # Run as root to access Docker socket
     networks:
-      - homeserver-network
+      - cleaner_network
 
 networks:
-  homeserver-network:
+  cleaner_network:
     driver: bridge
