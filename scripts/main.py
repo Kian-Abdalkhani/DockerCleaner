@@ -13,11 +13,15 @@ EXCLUDED_STACKS = [
 ]
 
 def setup_logging():
-    # Create a logs/ directory if it doesn't exist
-    os.makedirs(r'../logs', exist_ok=True)
+    # Create directory if it doesn't exist
+    os.makedirs('../logs', exist_ok=True)
 
-    # Use a single log filename without a timestamp
-    log_filename = r'../logs/app.log'
+    # Create the log file
+    log_filename = '../logs/app.log'
+    if not os.path.exists(log_filename):
+        # Create an empty file
+        with open(log_filename, 'w') as f:
+            pass  # Creates empty file
 
     # Configure logging with rotating file handler
     # maxBytes: 1MB file size limit
