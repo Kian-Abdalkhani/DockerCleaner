@@ -63,16 +63,9 @@ def get_running_compose_stacks():
     return running_stacks
 
 def restart_compose_stack(stack_name, config_files):
-    """Restart a specific Docker Compose stack"""
-    # Build the compose command with config files
-    compose_cmd = ["docker", "compose"]
-
-    # Add config files
-    for config_file in config_files.split(','):
-        compose_cmd.extend(["-f", config_file.strip()])
-
-    # Add the project name
-    compose_cmd.extend(["-p", stack_name])
+    """Restart a specific Docker Compose stack using project name only"""
+    # Use project name instead of config files
+    compose_cmd = ["docker", "compose", "-p", stack_name]
 
     # Stop the stack
     logging.info(f"Stopping stack: {stack_name}")
